@@ -7,6 +7,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'python-mode/python-mode'
 Plug 'davidhalter/jedi-vim'
 Plug 'rosenfeld/conque-term'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'andviro/flake8-vim'
+Plug 'PyCQA/pycodestyle'
 
 call plug#end()
 
@@ -93,14 +96,15 @@ let g:pymode_run = 0
 " первой строки при автодополнении
 let g:jedi#popup_select_first = 0
 
-
+"Проверка на соответствие PEP8"
+let g:PyFlakeOnWrite = 1
 "=====================================================
 "" User hotkeys
 "=====================================================
 "" ConqueTerm
 " запуск интерпретатора на F5
 nnoremap <F5> :ConqueTermSplit ipython<CR>
-"nnoremap <buffer> <F5> :exec 'ipython' shellescape(@%, 1)<CR>
+nnoremap <buffer> <F9> :exec '!clear; python' shellescape(@%, 1)<CR>
 " " а debug-mode на <F6>
 nnoremap <F6> :exec "ConqueTermSplit ipython " . expand("%")<CR>
 let g:ConqueTerm_StartMessages = 0
