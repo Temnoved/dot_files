@@ -1,0 +1,22 @@
+open_with k
+! find / -type f -name ranger*
+find / -type f -name ranger*
+rm aaa*.txt
+open_with 2
+mv geoip.xtx geoip.py
+cd /home/alex/text/
+cd /home/alex/raboch/draft_tmp
+rename geoip.py
+ll
+shell 
+open_with 17
+open_with 15
+open_with 13
+open_with 
+rename EVE Community VM.vmsd
+open_with 5
+rename 
+
+open_with 0
+shell sudo apt install mediainfo
+delete
