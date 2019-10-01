@@ -92,18 +92,34 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+#monitor settings
+exec xrandr --output HDMI2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1920x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off
+
+set $first_monitor HDMI1
+set $second_monitor HDMI2
+
+workspace 1 output $first_monitor
+workspace 2 output $first_monitor
+workspace 3 output $first_monitor
+workspace 4 output $first_monitor
+workspace 5 output $first_monitor
+workspace 6 output $second_monitor
+workspace 7 output $second_monitor
+workspace 8 output $second_monitor
+workspace 9 output $second_monitor
+workspace 10 output $second_monitor
 
 # variables for workspaces
-set $workspace1 "1:Terminals "
-set $workspace2 "2:Web "
-set $workspace3 "3:FileManag "
-set $workspace4 "4:Virtual "
-set $workspace5 "5:Programm "
-set $workspace6 "6:"
-set $workspace7 "7:"
-set $workspace8 "8:Media "
-set $workspace9 "9:Messages "
-set $workspace10 "10:Torrent "
+set $workspace1 "1:Terminals  |"
+set $workspace2 "2:Web |"
+set $workspace3 "3:FileManag |"
+set $workspace4 "4:Virtual |"
+set $workspace5 "5:Programm |"
+set $workspace6 "6:|"
+set $workspace7 "7:|"
+set $workspace8 "8:Media |"
+set $workspace9 "9:Messages |"
+set $workspace10 "10:Torrent |"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -207,6 +223,7 @@ bar {
 }
 
 bindsym $mod+Shift+T exec "/home/alex/raboch/Soft/Telegram/Telegram"
+bindsym $mod+Shift+P exec "/home/alex/raboch/pycharm-community-2019.1.1/bin/pycharm.sh"
 bindsym $mod+n exec nemo
 bindsym $mod+b exec firefox
 bindsym $mod+Control+Left workspace prev
@@ -222,6 +239,8 @@ exec_always exec "/home/alex/raboch/Soft/Telegram/Telegram"
 exec_always feh --bg-scale /home/alex/pict/Osob/1.jpg
 
 
-
-
+bindsym Mod1+$left focus left
+bindsym Mod1+$down focus down
+bindsym Mod1+$up focus up
+bindsym Mod1+$right focus right
 
