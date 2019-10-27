@@ -10,6 +10,9 @@ Plug 'rosenfeld/conque-term'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'andviro/flake8-vim'
 Plug 'PyCQA/pycodestyle'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'jmcantrell/vim-virtualenv'
 
 call plug#end()
 
