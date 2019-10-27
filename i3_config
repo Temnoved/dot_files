@@ -222,7 +222,8 @@ bar {
                }
 }
 
-bindsym $mod+Shift+T exec "/home/alex/raboch/Soft/Telegram/Telegram"
+#bindsym $mod+Shift+T exec "/home/alex/raboch/Soft/Telegram/Telegram"
+bindsym $mod+Shift+T exec "/opt/telegram/Telegram"
 bindsym $mod+Shift+P exec "/home/alex/raboch/pycharm-community-2019.1.1/bin/pycharm.sh"
 bindsym $mod+n exec nemo
 bindsym $mod+b exec firefox
@@ -233,9 +234,14 @@ bindsym $mod+g exec google-chrome
 bindsym $mod+p exec audacious
 bindsym $mod+Shift+V exec virtualbox
 
+#Volum control
+bindsym mod+F6 exec amixer set Master 5%-
+bindsym mod+F7 exec amixer set Master 5%+
+
 exec_always deluge
 exec_always discord
-exec_always exec "/home/alex/raboch/Soft/Telegram/Telegram"
+#exec_always exec "/home/alex/raboch/Soft/Telegram/Telegram"
+exec_always exec "/opt/telegram/Telegram"
 exec_always feh --bg-scale /home/alex/pict/Osob/1.jpg
 
 
