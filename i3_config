@@ -235,14 +235,20 @@ bindsym $mod+p exec audacious
 bindsym $mod+Shift+V exec virtualbox
 
 #Volum control
-bindsym mod+F6 exec amixer set Master 5%-
-bindsym mod+F7 exec amixer set Master 5%+
+#bindsym mod+= exec amixer set Master 1%-
+#bindsym mod+- exec amixer set Master 1%+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
 
 exec_always deluge
 exec_always discord
 #exec_always exec "/home/alex/raboch/Soft/Telegram/Telegram"
 exec_always exec "/opt/telegram/Telegram"
 exec_always feh --bg-scale /home/alex/pict/Osob/1.jpg
+
 
 
 bindsym Mod1+$left focus left
