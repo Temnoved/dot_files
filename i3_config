@@ -93,10 +93,20 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 #monitor settings
-exec xrandr --output HDMI2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1920x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off
+#
+#for Linux Mint 18.3
+#exec xrandr --output HDMI2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1920x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off
 
-set $first_monitor HDMI1
-set $second_monitor HDMI2
+#for Ubuntu 18.04
+exec xrandr --output DP-1 --off --output HDMI-2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal
+
+#for Linux Mint 18.3
+#set $first_monitor HDMI1
+#set $second_monitor HDMI2
+
+#for Ubuntu 18.04
+set $first_monitor HDMI-1
+set $second_monitor HDMI-2
 
 workspace 1 output $first_monitor
 workspace 2 output $first_monitor
@@ -115,8 +125,8 @@ set $workspace2 "2:Web |"
 set $workspace3 "3:FileManag |"
 set $workspace4 "4:Virtual |"
 set $workspace5 "5:Programm |"
-set $workspace6 "6:|"
-set $workspace7 "7:|"
+set $workspace6 "6:workspace6 |"
+set $workspace7 "7:workspace7 |"
 set $workspace8 "8:Media |"
 set $workspace9 "9:Messages |"
 set $workspace10 "10:Torrent |"
@@ -225,7 +235,8 @@ bar {
 #bindsym $mod+Shift+T exec "/home/alex/raboch/Soft/Telegram/Telegram"
 bindsym $mod+Shift+T exec "/opt/telegram/Telegram"
 bindsym $mod+Shift+P exec "/home/alex/raboch/pycharm-community-2019.1.1/bin/pycharm.sh"
-bindsym $mod+n exec nemo
+#bindsym $mod+n exec nemo
+bindsym $mod+n exec nautilus
 bindsym $mod+b exec firefox
 bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+Right workspace next
@@ -247,8 +258,7 @@ exec_always deluge
 exec_always discord
 #exec_always exec "/home/alex/raboch/Soft/Telegram/Telegram"
 exec_always exec "/opt/telegram/Telegram"
-exec_always feh --bg-scale /home/alex/pict/Osob/1.jpg
-
+exec_always feh --bg-scale /home/alexander/pict/Osob/1.jpg
 
 
 bindsym Mod1+$left focus left
