@@ -234,7 +234,7 @@ bar {
 
 #bindsym $mod+Shift+T exec "/home/alex/raboch/Soft/Telegram/Telegram"
 bindsym $mod+Shift+T exec "/opt/telegram/Telegram"
-bindsym $mod+Shift+P exec "/home/alex/raboch/pycharm-community-2019.1.1/bin/pycharm.sh"
+bindsym $mod+Shift+P exec "/home/alexander/raboch/pycharm-community-2019.3.3/bin/pycharm.sh"
 #bindsym $mod+n exec nemo
 bindsym $mod+n exec nautilus
 bindsym $mod+b exec firefox
@@ -256,13 +256,16 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 
 exec_always deluge
 exec_always discord
-#exec_always exec "/home/alex/raboch/Soft/Telegram/Telegram"
 exec_always exec "/opt/telegram/Telegram"
 exec_always feh --bg-scale /home/alexander/pict/Osob/1.jpg
 
 
-bindsym Mod1+$left focus left
-bindsym Mod1+$down focus down
-bindsym Mod1+$up focus up
-bindsym Mod1+$right focus right
+#bindsym Mod1+$left focus left
+#bindsym Mod1+$down focus down
+#bindsym Mod1+$up focus up
+#bindsym Mod1+$right focus right
 
+#bindsym Mod1+h focus left
+#bindsym Mod1+j focus down
+#bindsym Mod1+k focus up
+#bindsym Mod1+l focus right
