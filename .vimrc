@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 
 "common
 Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -18,16 +19,21 @@ Plug 'superbrothers/vim-quickrun-markdown-gfm'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf'
-Plug 'chr4/nginx.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
+"Devops
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+Plug 'chr4/nginx.vim'
+
 "python
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'python-mode/python-mode'
 Plug 'davidhalter/jedi-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'andviro/flake8-vim'
 Plug 'PyCQA/pycodestyle'
+Plug 'jmcantrell/vim-virtualenv'
 
 "CSS/SCSS
 Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'less', 'stylus'] }
@@ -55,6 +61,21 @@ set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNO
 
 "Change leaderkey
 :let mapleader = ","
+
+"allow plugins by file type (required for plugins!)
+filetype plugin on
+filetype indent on
+
+" needed so deoplete can auto select the first suggestion
+set completeopt+=noinsert
+" comment this line to enable autocompletion preview window
+" (displays documentation related to the selected completion option)
+" disabled by default because preview makes the window flicker
+set completeopt-=preview
+
+" autocompletion of files and commands behaves like shell
+" (complete only the common part, list the options that match)
+set wildmode=list:longest
 
 "Set tab settings for different languages.
 autocmd FileType xml,css,html,sh,yaml,yml setlocal expandtab shiftwidth=2 tabstop=2
@@ -91,13 +112,18 @@ map <C-n> :NERDTreeToggle<CR>
 
 
 
-"=====================================================
-"" Python-mode settings
-"=====================================================
-"" отключаем автокомплит по коду (вместо него используется jedi-vim)
-let g:pymode_rope = 0
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
+""=====================================================
+""" Python-mode settings
+""=====================================================
+""" отключаем автокомплит по коду (вместо него используется jedi-vim)
+" let g:pymode_rope = 0
+" let g:pymode_rope_completion = 0
+" let g:pymode_rope_complete_on_dot = 0
+
+" let g:jedi#auto_initialization = 1
+" let g:jedi#auto_vim_configuration = 1
+" let g:jedi#popup_on_dot = 1
+" let g:jedi#popup_select_first = 1
 
 " документация
 let g:pymode_doc = 0
@@ -137,13 +163,13 @@ let g:jedi#popup_select_first = 0
 
 "Проверка на соответствие PEP8"
 let g:PyFlakeOnWrite = 1
-"=====================================================
+""=====================================================
 "" User hotkeys
 "=====================================================
 "" ConqueTerm
 " запуск интерпретатора на F5
 nnoremap <F5> :ConqueTermSplit ipython<CR>
-nnoremap <buffer> <F9> :exec '!clear; python' shellescape(@%, 1)<CR>
+nnoremap <buffer> <F9> :exec '!clear; python3' shellescape(@%, 1)<CR>
 " " а debug-mode на <F6>
 nnoremap <F6> :exec "ConqueTermSplit ipython " . expand("%")<CR>
 let g:ConqueTerm_StartMessages = 0
