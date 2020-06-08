@@ -1,5 +1,4 @@
 
-
 call plug#begin('~/.vim/plugged')
 
 "common
@@ -107,9 +106,17 @@ if has("gui_running")
 	set cursorline
 endif
 
+" Resize config
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+
+nnoremap <silent> <Leader>h :exe "vertical resize +5"<CR>
+nnoremap <silent> <Leader>; :exe "vertical resize -5"<CR>
+nnoremap <silent> <Leader>k :exe "resize -5"<CR>
+nnoremap <silent> <Leader>j :exe "resize +5"<CR>
+
 "Plugins settings
 map <C-n> :NERDTreeToggle<CR>
-
 
 
 ""=====================================================
@@ -126,7 +133,7 @@ map <C-n> :NERDTreeToggle<CR>
 " let g:jedi#popup_select_first = 1
 
 " документация
-let g:pymode_doc = 0
+let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 
 " " проверка кода
