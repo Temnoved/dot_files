@@ -235,6 +235,7 @@ bar {
 
 #bindsym $mod+Shift+T exec "/home/alex/raboch/Soft/Telegram/Telegram"
 bindsym $mod+Shift+T exec "/opt/telegram/Telegram"
+bindsym $mod+Shift+M exec "/opt/viber/Viber"
 bindsym $mod+Shift+P exec "/home/alexander/raboch/pycharm-community-2019.3.3/bin/pycharm.sh"
 #bindsym $mod+n exec nemo
 bindsym $mod+n exec nautilus
@@ -244,6 +245,7 @@ bindsym $mod+Control+Right workspace next
 bindsym Print exec gnome-screenshot
 bindsym $mod+g exec google-chrome
 bindsym $mod+p exec audacious
+bindsym $mod+Shift+S exec stacer
 bindsym $mod+Shift+V exec virtualbox
 
 #Volum control
