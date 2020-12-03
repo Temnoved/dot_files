@@ -1,7 +1,7 @@
 
 call plug#begin('~/.vim/plugged')
 
-"common
+" common
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'easymotion/vim-easymotion'
@@ -9,7 +9,8 @@ Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'rosenfeld/conque-term'
-"Plug 'ddollar/nerdcommenter' 
+Plug 'ryanoasis/vim-devicons'
+" Plug 'ddollar/nerdcommenter' 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'thinca/vim-quickrun'
 Plug 'mattn/webapi-vim'
@@ -21,11 +22,13 @@ Plug 'junegunn/fzf'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
-"Devops
+" Devops
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'chr4/nginx.vim'
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 
-"python
+" python
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'python-mode/python-mode'
 Plug 'davidhalter/jedi-vim'
@@ -33,13 +36,16 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'andviro/flake8-vim'
 Plug 'PyCQA/pycodestyle'
 Plug 'jmcantrell/vim-virtualenv'
+Plug 'vim-python/python-syntax' 
+" It is for Neovim
+" Plug 'numirias/semshi'
 
-"CSS/SCSS
-Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'less', 'stylus'] }
-Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'sass'] }
-Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss'] }
+" CSS/SCSS
+" Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'less', 'stylus'] }
+" Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss', 'sass'] }
+" Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'scss'] }
 
-"HTML
+" HTML
 Plug 'gregsexton/MatchTag', { 'for': ['html', 'javascript'] }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript'] }
 Plug 'othree/html5.vim', { 'for': ['html', 'javascript'] }
@@ -55,13 +61,13 @@ set ls=2
 set number
 set noautoindent
 
-"Enable hotkeys for Russian layout
+" Enable hotkeys for Russian layout
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
-"Change leaderkey
+" Change leaderkey
 :let mapleader = ","
 
-"allow plugins by file type (required for plugins!)
+" allow plugins by file type (required for plugins!)
 filetype plugin on
 filetype indent on
 
@@ -76,11 +82,11 @@ set completeopt-=preview
 " (complete only the common part, list the options that match)
 set wildmode=list:longest
 
-"Set tab settings for different languages.
-autocmd FileType xml,css,html,sh,yaml,yml setlocal expandtab shiftwidth=2 tabstop=2
+" Set tab settings for different languages.
+autocmd FileType xml,css,html,sh,yaml,yml,tf setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType c,cpp,lua,tex,python setlocal expandtab shiftwidth=4 softtabstop=4
 
-"при переходе за границу в 80 символов в Ruby/Python/sh/js/C/C++ подсвечиваем на темном фоне текст
+" при переходе за границу в 80 символов в Ruby/Python/sh/js/C/C++ подсвечиваем на темном фоне текст
  augroup vimrc_autocmds
 	autocmd!
 	autocmd FileType ruby,python,javascript,sh,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
@@ -88,7 +94,7 @@ autocmd FileType c,cpp,lua,tex,python setlocal expandtab shiftwidth=4 softtabsto
 	autocmd FileType ruby,python,javascript,sh,c,cpp set nowrap
 augroup END
 
-"Search settings
+" Search settings
 set hlsearch
 set incsearch
 set noswapfile
@@ -115,7 +121,7 @@ nnoremap <silent> <Leader>; :exe "vertical resize -5"<CR>
 nnoremap <silent> <Leader>k :exe "resize -5"<CR>
 nnoremap <silent> <Leader>j :exe "resize +5"<CR>
 
-"Plugins settings
+" Plugins settings
 map <C-n> :NERDTreeToggle<CR>
 
 
@@ -123,14 +129,14 @@ map <C-n> :NERDTreeToggle<CR>
 """ Python-mode settings
 ""=====================================================
 """ отключаем автокомплит по коду (вместо него используется jedi-vim)
-" let g:pymode_rope = 0
-" let g:pymode_rope_completion = 0
-" let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
 
-" let g:jedi#auto_initialization = 1
-" let g:jedi#auto_vim_configuration = 1
-" let g:jedi#popup_on_dot = 1
-" let g:jedi#popup_select_first = 1
+let g:jedi#auto_initialization = 1
+let g:jedi#auto_vim_configuration = 1
+let g:jedi#popup_on_dot = 1
+let g:jedi#popup_select_first = 1
 
 " документация
 let g:pymode_doc = 1
@@ -152,10 +158,10 @@ let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_key = '<leader>b'
 "
 " " подстветка синтаксиса
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
+" let g:pymode_syntax = 1
+" let g:pymode_syntax_all = 1
+" let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+" let g:pymode_syntax_space_errors = g:pymode_syntax_all
 "
 " " отключить autofold по коду
 let g:pymode_folding = 0
@@ -168,7 +174,7 @@ let g:pymode_run = 0
 " первой строки при автодополнении
 let g:jedi#popup_select_first = 0
 
-"Проверка на соответствие PEP8"
+" Проверка на соответствие PEP8"
 let g:PyFlakeOnWrite = 1
 ""=====================================================
 "" User hotkeys
